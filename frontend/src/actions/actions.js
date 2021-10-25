@@ -75,7 +75,7 @@ export const fetchItemServices = (id) => async (dispatch, getState) => {
     }
 }
 
-export const fetchAddItemServices = (newData) => async (dispatch, getState) => {
+export const fetchAddItemServices = (newData, handler) => async (dispatch, getState) => {
     dispatch(addServiceRequest());
     try {
         const response = await fetch(`${process.env.REACT_APP_CURRENT_URL}/api/services`, {
@@ -85,6 +85,7 @@ export const fetchAddItemServices = (newData) => async (dispatch, getState) => {
         if (response.status < 200 && response.status >= 300) {
             throw new Error(response.statusText);
         }
+        handler()
         dispatch(addServiceSuccess());
     } catch(e) {
         console.log('ошибка ', e.message )
