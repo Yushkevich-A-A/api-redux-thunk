@@ -52,15 +52,7 @@ export const addServiceSuccess = () => {
     return {type: 'ADD_SERVICE_SUCCESS'}
 }
 
-export const resetService = () => {
-    return {type: 'RESET_SERVICE'}
-}
-
-export const setChangeValuesService = (item) => {
-    return {type: 'SET_CHANGE_VALUES_SERVICE', payload: {item}}
-}
-
-export const fetchItemServices = (id) => async (dispatch, getState) => {
+export const fetchItemServices = (id, handler) => async (dispatch, getState) => {
     dispatch(addServiceRequest());
     try {
         const response = await fetch(`${process.env.REACT_APP_CURRENT_URL}/api/services/${id}`);
@@ -68,7 +60,8 @@ export const fetchItemServices = (id) => async (dispatch, getState) => {
             throw new Error(response.statusText);
         }
         const data = await response.json();
-        dispatch(setChangeValuesService(data))
+        dispatch(addServiceSuccess())
+        handler(data);
     } catch(e) {
         console.log('ошибка ', e.message )
         dispatch(addServiceError(e.message));
@@ -85,8 +78,8 @@ export const fetchAddItemServices = (newData, handler) => async (dispatch, getSt
         if (response.status < 200 && response.status >= 300) {
             throw new Error(response.statusText);
         }
-        handler()
         dispatch(addServiceSuccess());
+        handler();
     } catch(e) {
         console.log('ошибка ', e.message )
         dispatch(addServiceError(e.message));
