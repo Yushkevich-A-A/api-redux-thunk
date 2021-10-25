@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import ServicesPage from './pages/ServicesPage/ServicesPage';
 import EditItemPage from './pages/EditItemPage/EditItemPage';

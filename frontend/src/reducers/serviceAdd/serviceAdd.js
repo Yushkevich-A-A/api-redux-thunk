@@ -1,6 +1,6 @@
 const initItem = {
     item : {
-        id: 0,
+        id: null,
         name: '',
         price: 0,
         content: '',
@@ -17,6 +17,8 @@ function serviceAddReducer (state = initItem, action) {
             const { message } = action.payload;
             return {...state, loading: false, error: message};
         case 'ADD_SERVICE_SUCCESS':
+            return {...initItem};
+        case 'RESET_SERVICE':
             return {...initItem};
         case 'SET_CHANGE_VALUES_SERVICE': 
             const { item } = action.payload;

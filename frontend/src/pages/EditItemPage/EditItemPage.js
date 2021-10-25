@@ -3,7 +3,7 @@ import LoadingButton from '../../components/Loading/LoadingButton/LoadingButton'
 import { useSelector, useDispatch } from 'react-redux';
 import ErrorFetch from '../../components/Errors/ErrorFetch/ErrorFetch';
 import { Redirect } from 'react-router';
-import { fetchAddItemServices, fetchItemServices, setChangeValuesService } from '../../actions/actions';
+import { fetchAddItemServices, fetchItemServices, resetService } from '../../actions/actions';
 import './EditItemPage.css';
 
 
@@ -15,7 +15,9 @@ function EditItemPage(props) {
     const [ isRedirect, setRedirect ] = useState(false);
 
     useEffect(() => {
+        dispatch(resetService());
         dispatch(fetchItemServices(match.params.id));
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
