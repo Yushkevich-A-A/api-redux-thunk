@@ -1,0 +1,47 @@
+.editing-page {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-editing {
+    width: 400px;
+    padding: 10px;
+}
+
+.input-label {
+   display: block;
+   font-weight: 600;
+}
+
+.input-field {
+    width: 100%;
+}
+
+.editing-block:nth-child( n + 2 ) {
+    margin-top: 10px;
+}
+
+.button {
+    height: 30px;
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button:focus-visible {
+    outline: none;
+}
+
+.editing-block-actions {
+    display: flex;
+    align-items: center;
+}
